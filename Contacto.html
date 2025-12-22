@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+    <link rel="icon" type="image/png" href="ProyectCarWash/Logo/Sinfondo.png">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script src="scripts/load-navbar.js"></script>
+    <section class="contacto">
+    <h2>Contact Us</h2>
+    <p>Do you have any questions? Write to us and we will respond soon.</p>
+
+    <form id="contactForm">
+    <input type="text" id="nombre" placeholder="Name" required>
+    <input type="email" id="correo" placeholder="Email">
+    <textarea id="mensaje" placeholder="Inquiry about the service" required></textarea>
+
+    <button type="button" onclick="enviarWhatsApp()">Send via WhatsApp</button>
+</form>
+<script>
+    function enviarWhatsApp() {
+        const nombre = document.getElementById('nombre').value;
+        const correo = document.getElementById('correo').value;
+        const mensaje = document.getElementById('mensaje').value;
+
+        if (!nombre || !mensaje) {
+            alert('Please fill in the required fields.');
+            return;
+        }
+
+        let texto = `Hello, I am ${nombre}.%0A`;
+        if (correo) {
+            texto += `My email is: ${correo}.%0A`;
+        }
+        texto += `Message: ${mensaje}`;
+
+        const numeroWhatsApp = '50374731403'; // Replace with your WhatsApp number
+        const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+
+        window.open(url, '_blank');
+    }
+</script>
+</section>
+
+<footer>
+    <p>&copy; 2025 Galex. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

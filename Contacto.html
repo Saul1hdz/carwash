@@ -9,47 +9,109 @@
     <link rel="icon" type="image/png" href="ProyectCarWash/Logo/Sinfondo.png">
 </head>
 <body>
+    
     <div id="navbar-placeholder"></div>
     <script src="scripts/load-navbar.js"></script>
+
     <section class="contacto">
-    <h2>Contact Us</h2>
-    <p>Do you have any questions? Write to us and we will respond soon.</p>
+        <h2>Contact Us</h2>
+        <p>Do you have any questions? Write to us and we will respond soon.</p>
 
-    <form id="contactForm">
-    <input type="text" id="nombre" placeholder="Name" required>
-    <input type="email" id="correo" placeholder="Email">
-    <textarea id="mensaje" placeholder="Inquiry about the service" required></textarea>
+        <div class="contact-container">
 
-    <button type="button" onclick="enviarWhatsApp()">Send via WhatsApp</button>
-</form>
-<script>
-    function enviarWhatsApp() {
-        const nombre = document.getElementById('nombre').value;
-        const correo = document.getElementById('correo').value;
-        const mensaje = document.getElementById('mensaje').value;
+            <!-- Formulario -->
+            <div class="contact-card">
+                <form id="contactForm">
 
-        if (!nombre || !mensaje) {
-            alert('Please fill in the required fields.');
-            return;
+                    <input type="text" id="nombre" placeholder="Name" required>
+
+                    <input type="email" id="correo" placeholder="Email">
+
+                    <!-- 🔽 VEHICLE TYPE -->
+                    <select id="vehicleType" required>
+                        <option value="" disabled selected>Select your vehicle type</option>
+
+                        <option value="Sedan">Sedan</option>
+                        <option value="Hatchback / Compact">Hatchback / Compact</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="Convertible">Convertible</option>
+
+                        <option value="Small SUV">Small SUV</option>
+                        <option value="Mid-size SUV">Mid-size SUV</option>
+                        <option value="Full-size SUV">Full-size SUV</option>
+                        <option value="Crossover">Crossover</option>
+
+                        <option value="Small Pickup Truck">Small Pickup Truck</option>
+                        <option value="Mid-size Pickup Truck">Mid-size Pickup Truck</option>
+                        <option value="Full-size Pickup Truck">Full-size Pickup Truck</option>
+
+                        <option value="Minivan">Minivan</option>
+                        <option value="Passenger Van">Passenger Van</option>
+                        <option value="Cargo Van">Cargo Van</option>
+
+                        <option value="Electric Vehicle">Electric Vehicle</option>
+                        <option value="Hybrid Vehicle">Hybrid Vehicle</option>
+                        <option value="Luxury Vehicle">Luxury Vehicle</option>
+                        <option value="Sports Car">Sports Car</option>
+                    </select>
+
+                    <textarea id="mensaje" placeholder="Inquiry about the service" required></textarea>
+
+                    <button type="button" onclick="enviarWhatsApp()">
+                        Send via WhatsApp
+                    </button>
+
+                </form>
+            </div>
+
+            <!-- Carta de información -->
+            <div class="contact-card info-card">
+                <h3>Company Information</h3>
+
+                <p><strong>📞 Contact:</strong><br>+1 (281) 701-6397</p>
+                <p><strong>📧 Email:</strong><br>contact@galexcarwash.com</p>
+                <p><strong>🌐 Social Media:</strong><br>
+                    Instagram: @galexcarwash <br>
+                    Facebook: Galex Car Wash
+                </p>
+                <p><strong>📍 Location:</strong><br>Houston, Texas</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Galex. All rights reserved.</p>
+    </footer>
+
+    <!-- 📲 WhatsApp Script -->
+    <script>
+        function enviarWhatsApp() {
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const vehiculo = document.getElementById('vehicleType').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            if (!nombre || !vehiculo || !mensaje) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            let texto = `Hello, my name is ${nombre}.%0A`;
+            texto += `Vehicle type: ${vehiculo}.%0A`;
+
+            if (correo) {
+                texto += `Email: ${correo}.%0A`;
+            }
+
+            texto += `Message: ${mensaje}`;
+
+            const numeroWhatsApp = '12817016397';
+            const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+
+            window.open(url, '_blank');
         }
-
-        let texto = `Hello, I am ${nombre}.%0A`;
-        if (correo) {
-            texto += `My email is: ${correo}.%0A`;
-        }
-        texto += `Message: ${mensaje}`;
-
-        const numeroWhatsApp = '12817016397'; // Replace with your WhatsApp number
-        const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
-
-        window.open(url, '_blank');
-    }
-</script>
-</section>
-
-<footer>
-    <p>&copy; 2025 Galex. All rights reserved.</p>
-</footer>
+    </script>
 
 </body>
 </html>

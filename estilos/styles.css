@@ -11,6 +11,8 @@ body {
     background-color: #c5c5c5;
     color: #333;
     min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* ====== HEADER & NAV (MEJORADO) ====== */
@@ -230,19 +232,19 @@ h1 {
     }
 
     nav {
-        position: absolute;
-        top: 65px;
-        right: 0;
-        background-color: #fd0d0d;
-        flex-direction: column;
-        width: 200px;
-        padding: 15px;
-        gap: 10px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        border-radius: 0 0 0 10px;
-    }
+    position: fixed;
+    top: 65px;
+    right: 0;
+    background-color: #fd0d0d;
+    flex-direction: column;
+    width: 200px;
+    padding: 15px;
+    gap: 10px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+}
+
 
     nav.open {
         transform: translateX(0);

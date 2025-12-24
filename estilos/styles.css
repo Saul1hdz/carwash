@@ -267,7 +267,6 @@ footer {
 
 /* ====== HERO ====== */
 .hero {
-    background-image: url('/ProyectCarWash/Plantillas/8.png');
     background-color: #666666;
     padding: 100px 20px;
     text-align: center;
@@ -337,3 +336,32 @@ footer {
         -1px  1px 0 black,
          1px  1px 0 black;
 }
+/* ====== SECCIÓN IMAGEN RESPONSIVE ====== */
+.services-image-section {
+    background-color: #fff;
+    padding: 40px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Imagen adaptable */
+.services-image {
+    width: 100%;           /* se adapta al contenedor */
+    max-width: 900px;      /* límite en PC */
+    height: auto;          /* mantiene proporción */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Ajuste fino en móvil */
+@media (max-width: 768px) {
+    .services-image-section {
+        padding: 25px 15px;
+    }
+
+    .services-image {
+        max-width: 100%;
+    }
+}
+
